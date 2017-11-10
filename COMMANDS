@@ -21,3 +21,7 @@ php artisan make:seeder TipoProyectoTableSeeder
 php artisan make:migration create_proyecto_status_table --create=proyecto_status
 php artisan make:model ProyectoStatus
 php artisan make:seeder ProyectoStatusTableSeeder
+
+php artisan make:migration create_area_academica_table --create=area_academica
+php artisan make:model AreaAcademica
+php artisan make:seeder AreaAcademicaTableSeeder
