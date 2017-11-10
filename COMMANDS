@@ -25,3 +25,7 @@ php artisan make:seeder ProyectoStatusTableSeeder
 php artisan make:migration create_area_academica_table --create=area_academica
 php artisan make:model AreaAcademica
 php artisan make:seeder AreaAcademicaTableSeeder
+
+php artisan make:migration create_dependencia_academica_table --create=dependencia_academica
+php artisan make:model DependenciaAcademica
+php artisan make:seeder DependenciaAcademicaTableSeeder
