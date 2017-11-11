@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     protected $table = 'usuario';
-    protected $primaryKey = 'usuario_id';
+    protected $primaryKey = 'id';
     public $timestamps = false;
 
     protected $fillable = ['username', 'password'];
