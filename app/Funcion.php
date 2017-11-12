@@ -11,4 +11,9 @@ class Funcion extends Model
     public $timestamps = false;
 
     protected $fillable = ['name'];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Rol');
+    }
 }
