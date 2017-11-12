@@ -11,4 +11,9 @@ class Rol extends Model
     public $timestamps = false;
 
     protected $fillable = ['name'];
+
+    public function usuarios()
+    {
+        return $this->belongsToMany('App\Usuario');
+    }
 }

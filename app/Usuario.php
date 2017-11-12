@@ -12,4 +12,9 @@ class Usuario extends Model
 
     protected $fillable = ['username', 'password'];
     protected $hidden = ['password'];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Rol');
+    }
 }

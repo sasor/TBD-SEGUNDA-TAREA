@@ -20,6 +20,9 @@ class CreateRolUsuarioTable extends Migration
             $table->boolean('activo');
 
             $table->primary(['rol_id', 'usuario_id']);
+
+            $table->foreign('rol_id')->references('id')->on('rol');
+            $table->foreign('usuario_id')->references('id')->on('usuario');
         });
     }
 
