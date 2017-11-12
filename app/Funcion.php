@@ -16,4 +16,9 @@ class Funcion extends Model
     {
         return $this->belongsToMany('App\Rol');
     }
+
+    public function uis()
+    {
+        return $this->belongsToMany('App\Ui');
+    }
 }

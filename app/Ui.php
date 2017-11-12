@@ -11,4 +11,9 @@ class Ui extends Model
     public $timestamps = false;
 
     protected $fillable = ['name'];
+
+    public function funciones()
+    {
+        return $this->belongsToMany('App\Funcion');
+    }
 }
