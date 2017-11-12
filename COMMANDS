@@ -29,3 +29,7 @@ php artisan make:seeder AreaAcademicaTableSeeder
 php artisan make:migration create_dependencia_academica_table --create=dependencia_academica
 php artisan make:model DependenciaAcademica
 php artisan make:seeder DependenciaAcademicaTableSeeder
+
+# Tablas Pivote como Laravel los denomina
+php artisan make:migration create_rol_usuario_table --create=rol_usuario
+php artisan make:migration create_funcion_rol_table --create=funcion_rol
