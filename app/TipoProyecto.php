@@ -11,4 +11,9 @@ class TipoProyecto extends Model
     public $timestamps = false;
 
     protected $fillable = ['name'];
+
+    public function proyectos()
+    {
+        return $this->hasMany('App\Proyecto');
+    }
 }
