@@ -36,3 +36,5 @@ php artisan make:migration create_funcion_rol_table --create=funcion_rol
 php artisan make:migration create_funcion_ui_table --create=funcion_ui
 
 php artisan make:migration create_proyecto_table --create=proyecto
+
+php artisan make:migration create_proyecto_usuario_table --create=proyecto_usuario
