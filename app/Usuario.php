@@ -17,4 +17,9 @@ class Usuario extends Model
     {
         return $this->belongsToMany('App\Rol');
     }
+
+    public function proyectos()
+    {
+        return $this->belongsToMany('App\Proyecto');
+    }
 }
