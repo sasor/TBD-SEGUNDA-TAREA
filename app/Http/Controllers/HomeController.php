@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Home;
 use Illuminate\Http\Request;
+// para verificar si un usuario esta authentificado
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,8 +16,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.get');
+        }
         //return view('home');
-        return redirect()->route('login');
+        dd("bienvenido");
     }
 
     /**

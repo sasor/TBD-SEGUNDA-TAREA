@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/login', 'AuthController@index')->name('login');
+Route::get('/login', 'AuthController@index')->name('login.get');
+Route::post('/login', 'AuthController@authenticate')->name('login.post');
 
