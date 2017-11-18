@@ -15,7 +15,7 @@ class Usuario extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = ['username', 'password'];
-    protected $hidden = ['password'];
+    protected $hidden = ['password', 'remember_token'];
 
     public function roles()
     {

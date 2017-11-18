@@ -17,13 +17,18 @@ class AuthController extends Controller
         if (Auth::attempt([
                             'username'=>$r->username,
                             'password'=>$r->password
-                            ])
+                            ], false)
             ) {
+            $r->session()->put('username', $r->username);
             return redirect()->route('home');
-            //dd('correcto');
         } else {
-            //return redirect()->route('login.get');
-            dd('error');
+            return redirect()->route('login.get');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

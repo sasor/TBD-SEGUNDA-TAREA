@@ -17,6 +17,7 @@ class CreateUsuarioTable extends Migration
             $table->increments('id');
             $table->string('username', 100);
             $table->string('password', 100);
+            $table->rememberToken();
         });
     }
 

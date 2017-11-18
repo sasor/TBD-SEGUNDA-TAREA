@@ -14,13 +14,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //https://laravel.com/docs/5.0/authentication#retrieving-the-authenticated-user
+    //https://stackoverflow.com/questions/17835886/laravel-authuser-id-tying-to-get-a-property-of-a-non-object
     public function index()
     {
         if (!Auth::check()) {
             return redirect()->route('login.get');
         }
-        //return view('home');
-        dd("bienvenido");
+        // Auth::User() tiene todos los valores del usuario autentificado
+        //echo Auth::User()->id;
+        //echo session('username');
+        $id = Auth::User()->id;
+        $user = \App\Usuario::find($id);
+        return view('home');
     }
 
     /**
