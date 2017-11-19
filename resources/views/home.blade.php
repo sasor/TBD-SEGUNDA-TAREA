@@ -10,7 +10,7 @@
         <div class="panel-block">
           <ul class="menu-list">
             @foreach ($roles as $rol)
-              <li><a>{{ $rol->name  }}</a></li>
+              <li><a href="{{ $rol->id }}">{{ $rol->name  }}</a></li>
             @endforeach
           </ul> 
         </div>

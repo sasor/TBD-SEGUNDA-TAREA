@@ -57,9 +57,11 @@ class HomeController extends Controller
      * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show($rol_id)
     {
-        //
+        $rol = \App\Rol::findOrFail($rol_id);
+        $funciones = $rol->funciones;
+        return view('show', ['funciones'=>$funciones]);
     }
 
     /**
