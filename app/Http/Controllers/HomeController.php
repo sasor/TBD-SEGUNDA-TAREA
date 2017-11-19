@@ -26,7 +26,8 @@ class HomeController extends Controller
         //echo session('username');
         $id = Auth::User()->id;
         $user = \App\Usuario::find($id);
-        return view('home');
+        $roles = $user->roles;
+        return view('home', ['roles'=>$roles]);
     }
 
     /**
