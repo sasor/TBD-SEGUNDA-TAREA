@@ -13,6 +13,17 @@ class FuncionTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $funciones = [
+            'listar usuarios',
+            'listar proyectos',
+            'crear usuario',
+            'crear proyecto',
+            'listar roles'
+        ];
+        foreach ($funciones as $funcion) {
+            Funcion::create([
+                'name' => $funcion
+            ]);
+        }
     }
 }
