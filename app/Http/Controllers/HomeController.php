@@ -31,27 +31,6 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Home  $home
@@ -59,42 +38,21 @@ class HomeController extends Controller
      */
     public function show($rol_id)
     {
+        $data = [];
         $rol = \App\Rol::findOrFail($rol_id);
         $funciones = $rol->funciones;
-        return view('show', ['funciones'=>$funciones]);
+        foreach ($funciones as $funcion) {
+            $name = $funcion->name;
+            //$uis = $funcion->uis()->firstOrFail();
+            // AKA se verifica si una funcion tiene asociada una ui
+            $ui = $funcion->uis->first();
+            if (!$ui) {
+                continue;
+            }
+            $_ui = $ui->name;
+            array_push($data, ['funcion'=>$name, 'ui'=>$_ui]);
+        }
+        return view('show', ['data'=>$data]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Home $home)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Home $home)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Home $home)
-    {
-        //
-    }
 }
