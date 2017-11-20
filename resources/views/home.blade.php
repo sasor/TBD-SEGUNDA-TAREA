@@ -9,9 +9,11 @@
         </div>
         <div class="panel-block">
           <ul class="menu-list">
-            @foreach ($roles as $rol)
+            @forelse ($roles as $rol)
               <li><a href="{{ $rol->id }}">{{ $rol->name  }}</a></li>
-            @endforeach
+            @empty
+              <li>No Tienes Roles Definidos</li>
+            @endforelse
           </ul> 
         </div>
       </div>
