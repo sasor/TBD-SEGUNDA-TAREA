@@ -48,4 +48,10 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.users');
     }
+
+    public function roles()
+    {
+        $roles = \App\Rol::all();
+        return view('admin.roles', ['roles'=>$roles]);
+    }
 }
