@@ -23,4 +23,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/admin/usuario', 'AdminController@store')->name('admin.store');
     Route::get('/admin/roles', 'AdminController@roles')->name('admin.roles');
     Route::get('/admin/role', 'AdminController@role')->name('admin.role');
+    Route::post('/admin/role', 'AdminController@store_role')->name('admin.store.rol');
 });

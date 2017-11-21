@@ -54,4 +54,32 @@ class AdminController extends Controller
         $roles = \App\Rol::all();
         return view('admin.roles', ['roles'=>$roles]);
     }
+
+    public function role()
+    {
+        $funciones = \App\Funcion::all();
+        return view('admin.rol', ['funciones'=>$funciones]);
+    }
+
+    public function store_role(Request $request)
+    {
+        $add = $request->input('rol_name');
+    
+        $rol = \App\Rol::create([
+            'name'=>$add 
+        ]);
+
+        if (!empty($request->input('funciones'))) {
+            $funciones = $request->input('funciones');
+            // cuando el valor es on y cuando no es
+            foreach ($funciones as $key => $value) {
+                if ($value === 'on') {
+                    $rol->funciones()->attach($key, ['activo'=>true]);
+                } else {
+                    $rol->funciones()->attach($key, ['activo'=>$value]);
+                }
+            }
+        }
+        return redirect()->route('admin.roles');
+    }
 }

@@ -4,7 +4,7 @@
 <div class="columns">
   <div class="column is-10 is-offset-1">
     <p class="subtitle">Nuevo Rol</p>
-    <form method="POST" action="#">
+    <form method="POST" action="{{ route('admin.store.rol') }}">
       {{ csrf_field() }}
       <div class="field">
         <label class="label">Nombre Rol</label>
