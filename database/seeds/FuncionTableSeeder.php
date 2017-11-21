@@ -18,7 +18,8 @@ class FuncionTableSeeder extends Seeder
             'listar proyectos',
             'crear usuario',
             'crear proyecto',
-            'listar roles'
+            'listar roles',
+            'crear rol'
         ];
         foreach ($funciones as $funcion) {
             Funcion::create([
