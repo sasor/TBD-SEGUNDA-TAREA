@@ -22,4 +22,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/usuario', 'AdminController@usuario')->name('admin.user');
     Route::post('/admin/usuario', 'AdminController@store')->name('admin.store');
     Route::get('/admin/roles', 'AdminController@roles')->name('admin.roles');
+    Route::get('/admin/role', 'AdminController@role')->name('admin.role');
 });

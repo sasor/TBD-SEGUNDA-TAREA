@@ -49,7 +49,6 @@
           <button class="button is-primary">crear</button>
         </div>
       </div>
-      <div class=""></div>
     </form>
   </div>
 </div>
