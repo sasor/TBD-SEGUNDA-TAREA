@@ -19,7 +19,18 @@ class AuthController extends Controller
                             'password'=>$r->password
                             ], false)
             ) {
+
             $r->session()->put('username', $r->username);
+
+            $id = Auth::User()->id;
+            $token = $r->session()->get('_token');
+
+            \App\Session::create([
+                'usuario_id' => $id,
+                'token' => $token,
+                'activo' => true
+            ]);
+
             return redirect()->route('home');
         } else {
             return redirect()->route('login.get');
@@ -28,6 +39,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        \App\Usuario::find(Auth::User()->id)->session->delete();
         Auth::logout();
         return redirect()->route('home');
     }
