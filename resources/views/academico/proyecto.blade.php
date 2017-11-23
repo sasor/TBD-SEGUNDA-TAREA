@@ -3,7 +3,7 @@
 @section('content')
 <div class="columns">
   <div class="column is-two-thirds is-offset-2">
-    <form method="POST" action="#">
+    <form method="POST" action="{{ route('academico.store.proyecto') }}">
       {{ csrf_field() }}
       <div class="field">
         <label class="label">Titulo</label>

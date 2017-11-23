@@ -26,5 +26,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/admin/role', 'AdminController@store_role')->name('admin.store.rol');
 
     Route::get('/academico/proyectos', 'AcademicoController@proyectos')->name('academico.proyectos');
-    Route::get('/academico/proyecto', 'AcademicoController@proyecto')->name('academico.store.proyecto');
+    Route::get('/academico/proyecto', 'AcademicoController@proyecto')->name('academico.proyecto');
+    Route::post('/academico/proyecto', 'AcademicoController@store_proyecto')->name('academico.store.proyecto');
 });
