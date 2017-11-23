@@ -12,7 +12,7 @@
         @if(Auth::check())
           <div class="navbar-end">
             <span class="navbar-item">
-              <i class="fa fa-user-circle">&nbsp;</i>{{ Auth::User()->username }}
+              <i class="fa fa-user-circle">&nbsp;</i>{{ Auth::User()->username }}{{ Session::get('_token')}}
             </span>
             <a href="{{ route('logout') }}" class="navbar-item">
               <span><i class="fa fa-sign-out"></i></span>
