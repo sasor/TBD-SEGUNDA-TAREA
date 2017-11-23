@@ -9,8 +9,31 @@ class AcademicoController extends Controller
 {
     public function proyectos()
     {
-        $proyectos = \App\Proyecto::all();
-        return view('academico.proyectos', ['proyectos'=>$proyectos]);
+        $data = [];
+        $id = Auth::User()->id;
+        // aprovechando la relacion Proyecto-Usuario (tabla pivote)
+        $proyectos = \App\Usuario::find($id)->proyectos;
+
+        if (!empty($proyectos)) {
+            foreach ($proyectos as $proyecto) {
+                // obtengo el nombre del status del proyecto mediante la
+                // relacion que proyecto tiene con proyecto_status table
+                // ver modelo Proyecto
+                $status_name = $proyecto->proyecto_status->name;
+                $titulo_proyecto = \App\ProyectoDetalle::where(
+                    'proyecto_id',
+                    $proyecto->id
+                )->get()->first()->titulo_proyecto;
+
+                array_push($data, [
+                    'id'=> $proyecto->id,
+                    'titulo' => $titulo_proyecto,
+                    'status' => $status_name
+                ]);
+            }
+        }
+
+        return view('academico.proyectos', ['proyectos'=>$data]);
     }
 
     public function proyecto()
