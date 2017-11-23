@@ -26,4 +26,9 @@ class Usuario extends Authenticatable
     {
         return $this->belongsToMany('App\Proyecto');
     }
+
+    public function session()
+    {
+        return $this->hasOne('App\Session');
+    }
 }
