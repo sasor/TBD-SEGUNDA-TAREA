@@ -46,3 +46,6 @@ php artisan make:migration create_proyecto_detalle_table --create=proyecto_detal
 -- (auto-increment) https://stackoverflow.com/questions/787722/postgresql-autoincrement
 -- CREATE SEQUENCE proyecto_detalle_seq;
 -- ALTER TABLE proyecto_detalle ALTER id SET DEFAULT NEXTVAL('proyecto_detalle_seq');
+
+-- Session table migracion
+php artisan make:migration create_session_table --create=session
