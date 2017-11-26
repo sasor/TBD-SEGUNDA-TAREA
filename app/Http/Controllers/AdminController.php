@@ -9,8 +9,22 @@ class AdminController extends Controller
 {
     public function usuarios()
     {
+        $data = [];
         $users = \App\Usuario::all();
-        return view('admin.usuarios', ['usuarios'=>$users]);
+
+        foreach ($users as $user) {
+            $roles = '';
+            foreach ($user->roles as $rol) {
+                $roles .= ','.$rol->name;
+            }
+
+            array_push($data, [
+                'usuario'=> $user,
+                'roles'=> (!empty($roles)? $roles : 'Sin Roles')
+            ]);
+        }
+
+        return view('admin.usuarios', ['usuarios'=>$data]);
     }
 
     public function usuario()
