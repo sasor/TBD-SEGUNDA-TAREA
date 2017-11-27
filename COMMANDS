@@ -53,3 +53,4 @@ php artisan make:model Session
 
 -- Bitacora table
 php artisan make:migration create_bitacora_table --create=bitacora
+php artisan make:model Bitacora
