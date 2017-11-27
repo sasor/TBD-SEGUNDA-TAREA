@@ -26,6 +26,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/admin/role', 'AdminController@store_role')->name('admin.store.rol');
     Route::get('/admin/role/{id}', 'AdminController@show_rol')->name('admin.show.role');
     Route::post('/admin/role/{id}', 'AdminController@update_rol')->name('admin.update.role');
+    Route::get('/admin/funciones', 'AdminController@funciones')->name('admin.funciones');
+    Route::get('/admin/funcion', 'AdminController@funcion')->name('admin.funcion');
+    Route::post('/admin/funcion', 'AdminController@store_funcion')->name('admin.store.funcion');
+    Route::get('/admin/funcion/{id}', 'AdminController@show_funcion')->name('admin.show.funcion');
+    Route::post('/admin/funcion/{id}', 'AdminController@update_funcion')->name('admin.update.funcion');
 
     Route::get('/academico/proyectos', 'AcademicoController@proyectos')->name('academico.proyectos');
     Route::get('/academico/proyecto', 'AcademicoController@proyecto')->name('academico.proyecto');

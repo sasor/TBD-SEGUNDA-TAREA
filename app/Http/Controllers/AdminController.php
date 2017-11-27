@@ -146,4 +146,78 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.roles');
     }
+
+    public function funciones()
+    {
+        $funciones = \App\Funcion::all();
+        return view('admin.funciones', ['funciones' => $funciones]);
+    }
+
+    public function funcion()
+    {
+        $uis = \App\Ui::all();
+        return view('admin.funcion', ['uis' => $uis]);
+    }
+
+    public function store_funcion(Request $request)
+    {
+        $funcion_name = $request->input('funcion');
+    
+        $funcion = \App\Funcion::create([
+            'name'=>$funcion_name 
+        ]);
+
+        if (!empty($request->input('uis'))) {
+            $uis = $request->input('uis');
+            // cuando el valor es on y cuando no es
+            foreach ($uis as $key => $value) {
+                if ($value === 'on') {
+                    $funcion->uis()->attach($key, ['activo'=>true]);
+                } else {
+                    $funcion->uis()->attach($key, ['activo'=>$value]);
+                }
+            }
+        }
+        return redirect()->route('home');
+    }
+
+    public function show_funcion($id)
+    {
+        $funcion = \App\Funcion::find($id);
+        $uis = \App\Ui::all();
+        $uis_id = [];
+
+        foreach ($funcion->uis as $ui) {
+            array_push($uis_id, $ui->id);
+        }
+
+        return view('admin.update_funcion', [
+            'funcion' => $funcion,
+            'uis' => $uis,
+            'funcion_ui' => $uis_id
+        ]);
+    }
+
+    public function update_funcion(Request $request, $id)
+    {
+        /*$inputs = $request->all();
+        var_dump($inputs);
+        echo $id;
+        exit;*/
+
+        $funcion = \App\Funcion::find($id);
+        $funcion->uis()->detach();
+
+        if (!empty($request->input('uis'))) {
+            $uis = $request->input('uis');
+            foreach ($uis as $key => $value) {
+                if ($value == 'on') {
+                    $funcion->uis()->attach($key, ['activo' => true]);
+                } elseif ($value != 'null') {
+                    $funcion->uis()->attach($key, ['activo' => $value]);
+                }
+            }
+        }
+        return redirect()->route('home');
+    }
 }
