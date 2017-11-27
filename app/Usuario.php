@@ -5,6 +5,7 @@ namespace App;
 //use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Observers\UsuarioObserver;
 
 class Usuario extends Authenticatable
 {
@@ -16,6 +17,12 @@ class Usuario extends Authenticatable
 
     protected $fillable = ['username', 'password'];
     protected $hidden = ['password', 'remember_token'];
+
+    public static function boot()
+    {
+        parent::boot();
+        Usuario::observe(UsuarioObserver::class);
+    }
 
     public function roles()
     {
