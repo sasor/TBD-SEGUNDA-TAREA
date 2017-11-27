@@ -16,7 +16,7 @@ class UsuarioObserver
     
     public function retrieved(Usuario $user)
     {
-        $token = session()->get('username');
+        //$token = session()->get('username');
 
         /*$current_session = Session::where('token', $token)->get()->first();
         $usuario = '';
@@ -27,27 +27,18 @@ class UsuarioObserver
             $usuario = Usuario::find($id);
         }*/
 
-        $data_old = implode(',', [$user->username, $user->password]);
+        /*$data_old = implode(',', [$user->username, $user->password]);
 
         Bitacora::create([
             'data_old' => $data_old,
             'operacion' => 'SELECT',
             'on_table' => 'usuario',
             'usuario' => $token//$logged->username
-        ]);
+        ]);*/
     }
 
     public function saving(Usuario $user)
     {
-        $token = session()->get('username');
-        $data_old = implode(',', [$user->username, $user->password]);
-
-        Bitacora::create([
-            'data_new' => $data_old,
-            'operacion' => 'INSERT-saving',
-            'on_table' => 'usuario',
-            'usuario' => $token
-        ]);
     }
 
     public function saved(Usuario $user)
@@ -65,7 +56,15 @@ class UsuarioObserver
 
     public function created(Usuario $user)
     {
-        //
+        $token = session()->get('username');
+        $data_new = implode(',', [$user->username, $user->password]);
+
+        Bitacora::create([
+            'data_new' => $data_new,
+            'operacion' => 'INSERT-created',
+            'on_table' => 'usuario',
+            'usuario' => $token
+        ]);
     }
 
     public function creating(Usuario $user)
@@ -75,12 +74,29 @@ class UsuarioObserver
 
     public function updating(Usuario $user)
     {
+        $token = session()->get('username');
+        $data_new = implode(',', [$user->username, $user->password]);
+
+        Bitacora::create([
+            'data_new' => $data_new,
+            'operacion' => 'UPDATE-updating',
+            'on_table' => 'usuario',
+            'usuario' => $token
+        ]);
         //
     }
 
     public function updated(Usuario $user)
     {
-        //
+        $token = session()->get('username');
+        $data_new = implode(',', [$user->username, $user->password]);
+
+        Bitacora::create([
+            'data_new' => $data_new,
+            'operacion' => 'UPDATE-updated',
+            'on_table' => 'usuario',
+            'usuario' => $token
+        ]);
     }
 
     public function deleting(Usuario $user)
@@ -90,7 +106,15 @@ class UsuarioObserver
 
     public function deleted(Usuario $user)
     {
-        //
+        $token = session()->get('username');
+        $data_old = implode(',', [$user->username, $user->password]);
+
+        Bitacora::create([
+            'data_old' => $data_old,
+            'operacion' => 'DELETE-deleted',
+            'on_table' => 'usuario',
+            'usuario' => $token
+        ]);
     }
 
     public function restoring(Usuario $user)
