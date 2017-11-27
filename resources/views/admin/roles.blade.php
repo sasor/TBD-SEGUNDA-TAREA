@@ -19,7 +19,7 @@
         @foreach ($roles as $rol)
         <tr>
           <td>{{ $rol->name }}</td>
-          <td><a href="{{ $rol->id }}">ver</a></td>
+          <td><a href="role/{{ $rol->id }}">ver</a></td>
         </tr>
         @endforeach
       </tbody>

@@ -24,6 +24,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/roles', 'AdminController@roles')->name('admin.roles');
     Route::get('/admin/role', 'AdminController@role')->name('admin.role');
     Route::post('/admin/role', 'AdminController@store_role')->name('admin.store.rol');
+    Route::get('/admin/role/{id}', 'AdminController@show_rol')->name('admin.show.role');
+    Route::post('/admin/role/{id}', 'AdminController@update_rol')->name('admin.update.role');
 
     Route::get('/academico/proyectos', 'AcademicoController@proyectos')->name('academico.proyectos');
     Route::get('/academico/proyecto', 'AcademicoController@proyecto')->name('academico.proyecto');

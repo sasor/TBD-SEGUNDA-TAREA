@@ -96,4 +96,54 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.roles');
     }
+
+    public function show_rol($id)
+    {
+        $rol = \App\Rol::find($id);
+        $funciones_id = [];
+
+        foreach ($rol->funciones as $funcion) {
+            array_push($funciones_id, $funcion->id);
+        }
+
+        $funciones = \App\Funcion::all();
+        return view('admin.update_rol', [
+            'rol' => $rol,
+            'rol_funcion' => $funciones_id,
+            'funciones' => $funciones
+        ]);
+    }
+
+    public function update_rol(Request $request, $id)
+    {
+        /*$inputs = $request->all();
+        var_dump($inputs);
+        exit;*/
+
+        // https://stackoverflow.com/questions/24702640/laravel-save-update-many-to-many-relationship
+        // https://stackoverflow.com/questions/40572382/laravel-update-many-to-many-foreign-key-record
+        // https://laracasts.com/discuss/channels/eloquent/how-to-update-many-to-many-relationships-pivot-table
+        $rol = \App\Rol::find($id);
+        $rol->funciones()->detach();
+
+        if (!empty($request->input('funciones'))) {
+            $funciones = $request->input('funciones');
+            foreach ($funciones as $key => $value) {
+                /*if ($value != 'null' && $value != 'on') {
+                    $rol->funciones()->sync($key, ['activo' => $value]);
+                } 
+                elseif ($value == 'on') {
+                    $rol->funciones()->attach($key, ['activo' => true]);
+                } else {
+                    $rol->funciones()->attach($key, ['activo'=>$value]);
+                }*/
+                if ($value == 'on') {
+                    $rol->funciones()->attach($key, ['activo' => true]);
+                } elseif ($value != 'null') {
+                    $rol->funciones()->attach($key, ['activo' => $value]);
+                }
+            }
+        }
+        return redirect()->route('admin.roles');
+    }
 }
