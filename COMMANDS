@@ -50,3 +50,6 @@ php artisan make:migration create_proyecto_detalle_table --create=proyecto_detal
 -- Session table migracion
 php artisan make:migration create_session_table --create=session
 php artisan make:model Session
+
+-- Bitacora table
+php artisan make:migration create_bitacora_table --create=bitacora
