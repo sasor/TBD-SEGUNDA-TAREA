@@ -31,6 +31,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/admin/funcion', 'AdminController@store_funcion')->name('admin.store.funcion');
     Route::get('/admin/funcion/{id}', 'AdminController@show_funcion')->name('admin.show.funcion');
     Route::post('/admin/funcion/{id}', 'AdminController@update_funcion')->name('admin.update.funcion');
+    Route::get('/admin/uis', 'AdminController@uis')->name('admin.uis');
+    Route::get('/admin/ui', 'AdminController@ui')->name('admin.ui');
+    Route::post('/admin/ui', 'AdminController@store_ui')->name('admin.store.ui');
 
     Route::get('/academico/proyectos', 'AcademicoController@proyectos')->name('academico.proyectos');
     Route::get('/academico/proyecto', 'AcademicoController@proyecto')->name('academico.proyecto');

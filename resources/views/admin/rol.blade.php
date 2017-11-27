@@ -11,7 +11,7 @@
         <div class="control has-icons-left has-icons-right">
           <input class="input" type="text" placeholder="rol name" value="" name="rol_name" required>
           <span class="icon is-small is-left">
-            <i class="fa fa-user-plus"></i>
+            <i class="fa fa-sun-o"></i>
           </span>
         </div>
       </div>

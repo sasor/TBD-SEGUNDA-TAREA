@@ -200,11 +200,6 @@ class AdminController extends Controller
 
     public function update_funcion(Request $request, $id)
     {
-        /*$inputs = $request->all();
-        var_dump($inputs);
-        echo $id;
-        exit;*/
-
         $funcion = \App\Funcion::find($id);
         $funcion->uis()->detach();
 
@@ -218,6 +213,24 @@ class AdminController extends Controller
                 }
             }
         }
+        return redirect()->route('home');
+    }
+
+    public function uis()
+    {
+        $uis = \App\Ui::all();
+        return view('admin.uis', ['uis' => $uis]);
+    }
+
+    public function ui()
+    {
+        return view('admin.ui');
+    }
+
+    public function store_ui(Request $request)
+    {
+        $add = $request->input('ui');
+        \App\Ui::create(['name' => $add]);
         return redirect()->route('home');
     }
 }
